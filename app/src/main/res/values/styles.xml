@@ -31,7 +31,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
@@ -39,6 +39,18 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
         <item name="colorButtonNormal">@color/colorPrimaryDark</item>
         <item name="android:colorButtonNormal">@color/colorPrimaryDark</item>
+        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+
+    <style name="RecipeComplexityTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:colorButtonNormal">@color/colorAccent</item>
         <item name="android:textColorHint">#FFFFFF</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
