@@ -1,8 +1,14 @@
 package fatsecret.platform;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import POJOs.Recipe;
+import utils.StringParser;
 
 /**
  * Created by serban on 5/21/16.
@@ -10,7 +16,7 @@ import POJOs.Recipe;
 
 public class RecipeFactory {
 
-    public Recipe getRecipe(JSONObject jsonObject) {
+    public static Recipe getRecipe(JSONObject jsonObject, String[] userIngredients) {
         Recipe recipe = new Recipe();
         try {
             recipe.setDescription(jsonObject.getString("recipe_description"));
@@ -23,9 +29,35 @@ public class RecipeFactory {
             recipe.setTime(time);
 
             recipe.setCalories(jsonObject.getInt("calories"));
+
+            List<String> ingredients = getIngredientsFromJSON(jsonObject);
+            recipe.setIngredients(ingredients);
+            List<String> userIngAsList = Arrays.asList(userIngredients);
+            recipe.setUserIngredients(userIngAsList);
+            recipe.setRemainingIngredients(StringParser.makeDiff(ingredients, userIngAsList));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return recipe;
+    }
+
+    private static List<String> getIngredientsFromJSON(JSONObject jsonObject) {
+        List<String> ingredients = new ArrayList<String>();
+
+        try {
+            JSONObject json = jsonObject.getJSONObject("recipes");
+            JSONArray jsonArray = json.getJSONArray("recipe");
+            int size = jsonArray.length();
+
+            for (int i = 0; i < size; i++) {
+                JSONObject ingredientJSON = jsonArray.optJSONObject(i);
+                ingredients.add(ingredientJSON.getString("food_name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ingredients;
     }
 }

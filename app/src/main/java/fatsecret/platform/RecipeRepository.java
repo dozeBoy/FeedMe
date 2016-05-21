@@ -19,11 +19,12 @@ public class RecipeRepository {
 
     private JSONObject jsonResponse;
     private List<Recipe> recipes;
-    private RecipeFactory recipeFactory;
     private FatSecretAPI fatSecretAPI;
+    private String[] userIngredients;
 
     // input array of ingredients
     public void setIngredients(String[] ingredients) {
+        userIngredients = ingredients;
         String ingredientsQuery = StringParser.makeArrayToString(ingredients);
 
         try {
@@ -79,7 +80,7 @@ public class RecipeRepository {
                 JSONObject recipeJSON = jsonArray.optJSONObject(i);
                 long ID = recipeJSON.getLong("recipe_id");
                 recipeJSON = fatSecretAPI.getRecipe(ID);
-                recipes.add(recipeFactory.getRecipe(recipeJSON));
+                recipes.add(RecipeFactory.getRecipe(recipeJSON, userIngredients));
             }
         } catch (Exception e) {
             e.printStackTrace();

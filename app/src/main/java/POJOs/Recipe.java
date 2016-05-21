@@ -1,5 +1,7 @@
 package POJOs;
 
+import java.util.List;
+
 /**
  * Created by serban on 5/21/16.
  */
@@ -12,6 +14,10 @@ public class Recipe {
     private String name;
     private int preparationTime;
     private int calories;
+
+    private List<String> ingredients;
+    private List<String> userIngredients;
+    private List<String> remainingIngredients;
 
     public String getDescription() {
         return description;
@@ -60,4 +66,16 @@ public class Recipe {
     public void setCalories(int calories) { this.calories = calories; }
 
     public int getCalories() { return calories; }
+
+    public List<String> getIngredients() { return ingredients; }
+
+    public void setIngredients(List<String> ingredients) {this.ingredients = ingredients; }
+
+    public List<String> getUserIngredients() { return userIngredients; }
+
+    public void setUserIngredients(List<String> userIngredients) { this.userIngredients = userIngredients; }
+
+    public List<String> getRemainingIngredients() { return remainingIngredients; }
+
+    public void setRemainingIngredients(List<String> remainingIngredients) { this.remainingIngredients = remainingIngredients; }
 }
