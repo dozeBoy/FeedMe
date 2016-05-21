@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fitlife.feedme">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,8 +14,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:label="@string/app_name"
@@ -32,8 +30,15 @@
             android:label="Result"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:name=".RecipeActivity"
+            android:label="Recipe"
+            android:theme="@style/RecipeAppTheme" />
+        <activity
+            android:name=".IngredientsActivity"
+            android:label="Ingredients"
+            android:theme="@style/IngredientsTheme"></activity>
+
+
     </application>
 
 </manifest>

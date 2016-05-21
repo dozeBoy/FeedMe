@@ -70,7 +70,7 @@ public class ResultActivity extends AppCompatActivity {
 
             try {
                 try {
-                    jsonobj = fatSecretAPI.getRecipes("Burgers");
+                    jsonobj = fatSecretAPI.getRecipes("ham eggs");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

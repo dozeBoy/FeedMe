@@ -13,6 +13,12 @@
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Quisque tincidunt leo vitae quam posuere mattis. Etiam egestas velit sit amet nisi viverra, et auctor ipsum ornare.
+      Etiam pharetra, metus feugiat porttitor dapibus, est magna accumsan odio, sed tincidunt sapien tellus id sapien.
+      Nulla non tincidunt massa. Curabitur tincidunt blandit consequat. Integer condimentum nunc a tempus viverra.
+      Cras commodo velit elit, sit amet lobortis nisl accumsan a.</string>
+
     <string name="pref_title_social_recommendations">Enable social recommendations</string>
     <string name="pref_description_social_recommendations">Recommendations for people to contact
         based on your message history
