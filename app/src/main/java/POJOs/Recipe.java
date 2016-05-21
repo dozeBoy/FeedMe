@@ -53,7 +53,7 @@ public class Recipe {
         this.name = name;
     }
 
-    public int getPreparationTime() { return  preparationTime; }
+    public int getTime() { return  preparationTime; }
 
-    public void setPreparationTime(int time) { preparationTime = time; }
+    public void setTime(int time) { preparationTime = time; }
 }
