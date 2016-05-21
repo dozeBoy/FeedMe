@@ -18,6 +18,9 @@ public class RecipeFactory {
             recipe.setImageURL(jsonObject.getString("recipe_image"));
             recipe.setName(jsonObject.getString("recipe_name"));
             recipe.setUrl(jsonObject.getString("recipe_url"));
+
+            int time = jsonObject.getInt("preparation_time_min") + jsonObject.getInt("cooking_time_min");
+            recipe.setTime(time);
         } catch (Exception e) {
             e.printStackTrace();
         }
