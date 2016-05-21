@@ -47,11 +47,24 @@
     </style>
 
 
+
     <style name="RecipeComplexityTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/colorPrimary</item>
         <item name="colorButtonNormal">@color/colorAccent</item>
         <item name="android:colorButtonNormal">@color/colorAccent</item>
-        <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:textColorHint">#212121</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+
+    <style name="CalorieIntakeTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:colorButtonNormal">@color/colorAccent</item>
+        <item name="android:textColorHint">#212121</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="windowNoTitle">true</item>

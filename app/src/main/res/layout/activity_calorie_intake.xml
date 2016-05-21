@@ -19,56 +19,41 @@
             android:orientation="vertical">
 
 
-            <ImageView
+          <!--  <ImageView
                 android:id="@+id/recipe_complexity_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:src="@drawable/choose" />
+                android:src="@drawable/choose" /> -->
 
             <Button
-                android:id="@+id/button_quick"
+                android:id="@+id/button_fitmeal"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:layout_margin="50dp"
                 android:gravity="center"
-                android:text="Quick"
-                android:textColor="@color/colorPrimaryDark"
-                android:bottomRightRadius="20dp"
-                android:bottomLeftRadius="20dp"
-                android:topLeftRadius="20dp"
-                android:topRightRadius="20dp"
+                android:text="FitMeal"
                 app:layout_anchorGravity="top|center" />
 
 
             <Button
-                android:id="@+id/button_medium"
+                android:id="@+id/button_ordinary"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:layout_margin="50dp"
-                android:text="Medium"
-                android:textColor="@color/colorPrimaryDark"
-                android:bottomRightRadius="20dp"
-                android:bottomLeftRadius="20dp"
-                android:topLeftRadius="20dp"
-                android:topRightRadius="20dp"
+                android:text="OrdinaryMeal"
                 app:layout_anchorGravity="bottom|center" />
 
 
             <Button
-                android:id="@+id/button_slow"
+                android:id="@+id/button_cheat"
                 android:layout_width="200dp"
                 android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:layout_margin="50dp"
-                android:text="Slow"
-                android:textColor="@color/colorPrimaryDark"
-                android:bottomRightRadius="20dp"
-                android:bottomLeftRadius="20dp"
-                android:topLeftRadius="20dp"
-                android:topRightRadius="20dp"
+                android:text="CheatMeal"
                 app:layout_anchorGravity="bottom|center" />
 
         </LinearLayout>

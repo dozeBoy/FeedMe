@@ -17,7 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import POJOs.RecyclerItem;
-import adapters.ResultRecycleViewAdapter;
+import adapters.RecipeRecycleViewAdapter;
 import fatsecret.platform.FatSecretAPI;
 import utils.JSONParser;
 
@@ -25,7 +25,7 @@ public class ResultActivity extends AppCompatActivity {
     private ProgressDialog progressDialog = null;
     private List<RecyclerItem> feedsList;
     private RecyclerView mRecyclerView;
-    private ResultRecycleViewAdapter adapter;
+    private RecipeRecycleViewAdapter adapter;
 
 
     @Override

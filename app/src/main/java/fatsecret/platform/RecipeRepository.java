@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,27 +16,30 @@ import utils.StringParser;
  * Created by serban on 5/21/16.
  */
 
-public class RecipeRepository {
+public class RecipeRepository implements Serializable {
+
+    public  final static String SER_KEY = "com.easyinfogeek.objectPass.ser";
 
     private JSONObject jsonResponse;
     private List<Recipe> recipes;
-    private FatSecretAPI fatSecretAPI;
+    private transient FatSecretAPI fatSecretAPI;
     private String[] userIngredients;
 
     // input array of ingredients
-    public void setIngredients(String[] ingredients) {
-        userIngredients = ingredients;
-        String ingredientsQuery = StringParser.makeArrayToString(ingredients);
-
-        try {
-            jsonResponse = fatSecretAPI.getRecipes(ingredientsQuery);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public JSONObject setIngredients(String[] ingredients) {
+            userIngredients = ingredients;
+            String ingredientsQuery = StringParser.makeArrayToString(ingredients);
+            fatSecretAPI = new FatSecretAPI("5fd3c9b977b646b3b3020b73be726db4","1a1cad108ee6471597bf41c3dfcd601e");
+            try {
+                jsonResponse = fatSecretAPI.getRecipes(ingredientsQuery);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         createRecipesArray(jsonResponse);
+        return  jsonResponse;
     }
 
     public List<Recipe> getAllRecipes() {
@@ -122,13 +126,13 @@ public class RecipeRepository {
     private int calculateMinCalories(String type) {
         int minCalories = 0;
         switch (type) {
-            case "quick":
+            case "fit":
                 minCalories = 0;
                 break;
             case "medium":
                 minCalories = 200;
                 break;
-            case "slow":
+            case "fat":
                 minCalories = 500;
                 break;
         }
@@ -138,13 +142,13 @@ public class RecipeRepository {
     private int calculateMaxCalories(String type) {
         int maxCalories = 1;
         switch (type) {
-            case "quick":
+            case "fit":
                 maxCalories = 199;
                 break;
             case "medium":
                 maxCalories = 499;
                 break;
-            case "slow":
+            case "fat":
                 maxCalories = 2000;
                 break;
         }
