@@ -48,7 +48,7 @@ public class RecipeRepository {
         List<Recipe> recipeList = new ArrayList<Recipe>();
         for (int i = 0; i < recipes.size(); i++) {
             Recipe recipe = recipes.get(i);
-            if (recipe.getPreparationTime() > minTime && recipe.getPreparationTime() < maxTime) {
+            if (recipe.getTime() > minTime && recipe.getTime() < maxTime) {
                 recipeList.add(recipe);
             }
         }
