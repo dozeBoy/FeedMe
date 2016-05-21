@@ -1,6 +1,7 @@
 package com.fitlife.feedme;
 
 import android.app.ProgressDialog;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ public class IngredientsActivity extends AppCompatActivity {
     EditText thirdIngredient;
     EditText fourthIngredient;
     EditText fifthIngredient;
-    Button nextButton;
+    FloatingActionButton fab;
 
 
     @Override
@@ -26,12 +27,14 @@ public class IngredientsActivity extends AppCompatActivity {
         thirdIngredient = (EditText) findViewById(R.id.third_ingredient);
         fourthIngredient = (EditText) findViewById(R.id.fourth_ingredient);
         fifthIngredient = (EditText) findViewById(R.id.fifth_ingredient);
-        nextButton = (Button) findViewById(R.id.button_next);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        fab = (FloatingActionButton) findViewById(R.id.fab_ingredients);
+
+
+
+        fab.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-
                 next();
             }
         });
@@ -40,7 +43,7 @@ public class IngredientsActivity extends AppCompatActivity {
 
     private void next() {
 
-        nextButton.setEnabled(false);
+        fab.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(IngredientsActivity.this);
         progressDialog.setIndeterminate(true);
@@ -59,7 +62,7 @@ public class IngredientsActivity extends AppCompatActivity {
     }
 
     private void onSucces() {
-        nextButton.setEnabled(true);
+        fab.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
 
