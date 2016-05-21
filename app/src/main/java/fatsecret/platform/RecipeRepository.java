@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import POJOs.Recipe;
@@ -15,6 +16,7 @@ import utils.StringParser;
  */
 
 public class RecipeRepository {
+
     private JSONObject jsonResponse;
     private List<Recipe> recipes;
     private RecipeFactory recipeFactory;
@@ -35,6 +37,24 @@ public class RecipeRepository {
         createRecipesArray(jsonResponse);
     }
 
+    public List<Recipe> getAllRecipes(){
+        return this.recipes;
+    }
+
+    public void filterRecipesByTime(String time) {
+        int minTime = calculateMinTime(time);
+        int maxTime = calculateMaxTime(time);
+
+        List<Recipe> recipeList = new ArrayList<Recipe>();
+        for (int i = 0; i < recipes.size(); i++) {
+            Recipe recipe = recipes.get(i);
+            if (recipe.getPreparationTime() > minTime && recipe.getPreparationTime() < maxTime) {
+                recipeList.add(recipe);
+            }
+        }
+        recipes = recipeList;
+    }
+
     private void createRecipesArray(JSONObject jsonResponse) {
         try {
             JSONObject json = jsonResponse.getJSONObject("recipes");
@@ -52,8 +72,35 @@ public class RecipeRepository {
         }
     }
 
-    public List<Recipe> getAllRecipes(){
-        return this.recipes;
+    private int calculateMinTime(String time) {
+        int minTime = 0;
+        switch (time) {
+            case "quick":
+                minTime = 0;
+                break;
+            case "medium":
+                minTime = 11;
+                break;
+            case "slow":
+                minTime = 31;
+                break;
+        }
+        return minTime;
     }
 
+    private int calculateMaxTime(String time) {
+        int maxTime = 1;
+        switch (time) {
+            case "quick":
+                maxTime = 10;
+                break;
+            case "medium":
+                maxTime = 30;
+                break;
+            case "slow":
+                maxTime = 90;
+                break;
+        }
+        return maxTime;
+    }
 }

@@ -10,6 +10,7 @@ public class Recipe {
     private long id;
     private String imageURL;
     private String name;
+    private int preparationTime;
 
 
     public String getDescription() {
@@ -51,4 +52,8 @@ public class Recipe {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getPreparationTime() { return  preparationTime; }
+
+    public void setPreparationTime(int time) { preparationTime = time; }
 }
