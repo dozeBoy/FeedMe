@@ -13,11 +13,11 @@ public class RecipeFactory {
     public Recipe getRecipe(JSONObject jsonObject) {
         Recipe recipe = new Recipe();
         try {
-            recipe.setDescription(jsonObject.get("recipe_description"));
-            recipe.setRecipeID(jsonObject.get("recipe_id"));
-            recipe.setImageURL(jsonObject.get("recipe_image"));
-            recipe.setName(jsonObject.get("recipe_name"));
-            recipe.setURL(jsonObject.get("recipe_url"));
+            recipe.setDescription(jsonObject.getString("recipe_description"));
+            recipe.setId(jsonObject.getLong("recipe_id"));
+            recipe.setImageURL(jsonObject.getString("recipe_image"));
+            recipe.setName(jsonObject.getString("recipe_name"));
+            recipe.setUrl(jsonObject.getString("recipe_url"));
         } catch (Exception e) {
             e.printStackTrace();
         }
