@@ -36,9 +36,11 @@
         <activity
             android:name=".IngredientsActivity"
             android:label="Ingredients"
-            android:theme="@style/IngredientsTheme"></activity>
-
-
+            android:theme="@style/IngredientsTheme" />
+        <activity
+            android:name=".RecipeComplexityActivity"
+            android:label="Complexity"
+            android:theme="@style/RecipeComplexityTheme"></activity>
     </application>
 
 </manifest>

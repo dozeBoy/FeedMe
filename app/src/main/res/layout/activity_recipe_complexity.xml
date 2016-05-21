@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <LinearLayout
+            android:id="@+id/ingredients_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/recipe_complexity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:src="@drawable/choose" />
+
+            <Button
+                android:id="@+id/button_quick"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_margin="50dp"
+                android:gravity="center"
+                android:text="Quick"
+                app:layout_anchorGravity="top|center" />
+
+
+            <Button
+                android:id="@+id/button_medium"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_margin="50dp"
+                android:text="Medium"
+                app:layout_anchorGravity="bottom|center" />
+
+
+            <Button
+                android:id="@+id/button_slow"
+                android:layout_width="200dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:layout_margin="50dp"
+                android:text="Slow"
+                app:layout_anchorGravity="bottom|center" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
+

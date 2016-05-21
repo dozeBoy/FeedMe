@@ -23,7 +23,7 @@ public class RecipeRepository {
     private FatSecretAPI fatSecretAPI;
 
     // input array of ingredients
-    public void setIngredients(String[] ingredients){
+    public void setIngredients(String[] ingredients) {
         String ingredientsQuery = StringParser.makeArrayToString(ingredients);
 
         try {
@@ -37,7 +37,7 @@ public class RecipeRepository {
         createRecipesArray(jsonResponse);
     }
 
-    public List<Recipe> getAllRecipes(){
+    public List<Recipe> getAllRecipes() {
         return this.recipes;
     }
 
