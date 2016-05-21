@@ -11,7 +11,7 @@ public class Recipe {
     private String imageURL;
     private String name;
     private int preparationTime;
-
+    private int calories;
 
     public String getDescription() {
         return description;
@@ -56,4 +56,8 @@ public class Recipe {
     public int getTime() { return  preparationTime; }
 
     public void setTime(int time) { preparationTime = time; }
+
+    public void setCalories(int calories) { this.calories = calories; }
+
+    public int getCalories() { return calories; }
 }

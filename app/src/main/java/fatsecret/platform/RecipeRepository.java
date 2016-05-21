@@ -55,6 +55,20 @@ public class RecipeRepository {
         recipes = recipeList;
     }
 
+    public void filterRecipesByCalories(String type) {
+        int minCalories = calculateMinCalories(type);
+        int maxCalories = calculateMaxCalories(type);
+
+        List<Recipe> recipeList = new ArrayList<Recipe>();
+        for (int i = 0; i < recipes.size(); i++) {
+            Recipe recipe = recipes.get(i);
+            if (recipe.getTime() > minCalories && recipe.getTime() < maxCalories) {
+                recipeList.add(recipe);
+            }
+        }
+        recipes = recipeList;
+    }
+
     private void createRecipesArray(JSONObject jsonResponse) {
         try {
             JSONObject json = jsonResponse.getJSONObject("recipes");
@@ -102,5 +116,37 @@ public class RecipeRepository {
                 break;
         }
         return maxTime;
+    }
+
+    private int calculateMinCalories(String type) {
+        int minCalories = 0;
+        switch (type) {
+            case "quick":
+                minCalories = 0;
+                break;
+            case "medium":
+                minCalories = 200;
+                break;
+            case "slow":
+                minCalories = 500;
+                break;
+        }
+        return minCalories;
+    }
+
+    private int calculateMaxCalories(String type) {
+        int maxCalories = 1;
+        switch (type) {
+            case "quick":
+                maxCalories = 199;
+                break;
+            case "medium":
+                maxCalories = 499;
+                break;
+            case "slow":
+                maxCalories = 2000;
+                break;
+        }
+        return maxCalories;
     }
 }

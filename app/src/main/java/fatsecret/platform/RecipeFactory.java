@@ -21,6 +21,8 @@ public class RecipeFactory {
 
             int time = jsonObject.getInt("preparation_time_min") + jsonObject.getInt("cooking_time_min");
             recipe.setTime(time);
+
+            recipe.setCalories(jsonObject.getInt("calories"));
         } catch (Exception e) {
             e.printStackTrace();
         }
