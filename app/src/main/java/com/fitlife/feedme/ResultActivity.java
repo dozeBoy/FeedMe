@@ -14,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.List;
 
 import POJOs.RecyclerItem;
@@ -79,9 +78,6 @@ public class ResultActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             Log.d("doInBackground", "");
-            //parseResult(jsonobj);
-
-            //  adapter.notifyDataSetChanged();
 
             return jsonobj;
         }
@@ -90,9 +86,6 @@ public class ResultActivity extends AppCompatActivity {
         protected void onPostExecute(JSONObject result) {
             super.onPostExecute(result);
             progressDialog.dismiss();
-//            adapter = new ResultRecycleViewAdapter(feedsList);
-//            mRecyclerView.setAdapter(adapter);
-
 
             Toast.makeText(getApplicationContext(), jsonobj.toString().substring(1, jsonobj.toString().length() - 1),
                     Toast.LENGTH_LONG).show();
