@@ -30,7 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat">
 
                 <EditText
                     android:id="@+id/first_ingredient"
@@ -45,7 +46,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat">
 
                 <EditText
                     android:id="@+id/second_ingredient"
@@ -60,7 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat">
 
                 <EditText
                     android:id="@+id/third_ingredient"
@@ -75,7 +78,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat">
 
                 <EditText
                     android:id="@+id/fourth_ingredient"
@@ -90,7 +94,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat">
+
 
                 <EditText
                     android:id="@+id/fifth_ingredient"
