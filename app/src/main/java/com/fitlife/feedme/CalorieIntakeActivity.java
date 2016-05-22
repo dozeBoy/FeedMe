@@ -14,6 +14,7 @@ public class CalorieIntakeActivity extends AppCompatActivity {
     Button ordinaryButton;
     Button cheatmealButton;
     //ImageView imageView;
+    RecipeRepository recipeRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +27,12 @@ public class CalorieIntakeActivity extends AppCompatActivity {
         // imageView = (ImageView) findViewById(R.id.recipe_complexity_title);
 
         Bundle bundle = getIntent().getExtras();
-        final RecipeRepository recipeRepository = (RecipeRepository) bundle.getSerializable(IngredientsActivity.SER_KEY);
+        recipeRepository = (RecipeRepository) bundle.getSerializable(IngredientsActivity.SER_KEY);
 
         fitmealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recipeRepository.filterRecipesByCalories("fit");
+                recipeRepository.setCalorieIntake("fit");
                 startRecipesCardList(recipeRepository);
             }
         });
@@ -39,7 +40,7 @@ public class CalorieIntakeActivity extends AppCompatActivity {
         ordinaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recipeRepository.filterRecipesByCalories("medium");
+                recipeRepository.setCalorieIntake("medium");
                 startRecipesCardList(recipeRepository);
             }
         });
@@ -47,7 +48,7 @@ public class CalorieIntakeActivity extends AppCompatActivity {
         cheatmealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recipeRepository.filterRecipesByCalories("fat");
+                recipeRepository.setCalorieIntake("fat");
                 startRecipesCardList(recipeRepository);
             }
         });

@@ -4,7 +4,9 @@
     <item >
         <bitmap
 
-            android:src="@drawable/logo"
-            android:gravity = "center" />
+            android:src="@drawable/logo2"
+            android:gravity = "center"
+            android:scaleHeight="10"
+            android:scaleWidth="10"/>
     </item>
 </layer-list>

@@ -13,25 +13,23 @@ import com.fitlife.feedme.R;
 
 import java.util.List;
 
-import POJOs.Recipe;
+import POJOs.RecipeCardView;
 
 
 public class RecipeRecycleViewAdapter extends RecyclerView.Adapter<RecipeRecycleViewAdapter.RecipeViewHolder> {
 
-    private List<Recipe> recipeItemList;
-    private Context context;
+    private List<RecipeCardView> recipeItemList;
     private OnRecyclerItemClick mOnRecyclerItemClickListener;
 
-    public RecipeRecycleViewAdapter(Context context, List<Recipe> recyclerItemList, OnRecyclerItemClick onRecyclerItemClick) {
+    public RecipeRecycleViewAdapter(List<RecipeCardView> recyclerItemList, OnRecyclerItemClick onRecyclerItemClick) {
         this.recipeItemList = recyclerItemList;
-        this.context = context;
         this.mOnRecyclerItemClickListener = onRecyclerItemClick;
     }
 
     @Override
     public RecipeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.card_layout_result, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout_result, parent, false);
 
         return new RecipeViewHolder(view);
     }
@@ -40,10 +38,9 @@ public class RecipeRecycleViewAdapter extends RecyclerView.Adapter<RecipeRecycle
     public void onBindViewHolder(RecipeViewHolder holder, int position) {
 
 
-        Recipe recipe = recipeItemList.get(position);
-
-        holder.imageViewThumbnail.setImageResource(R.drawable.medium);
+        RecipeCardView recipe = recipeItemList.get(position);
         holder.textView.setText(recipe.getName());
+        holder.imageView.setImageResource(R.drawable.burger);
 
 
     }
@@ -57,16 +54,15 @@ public class RecipeRecycleViewAdapter extends RecyclerView.Adapter<RecipeRecycle
 
     public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected ImageView imageViewThumbnail;
         protected TextView textView;
-
+        protected ImageView imageView;
 
         public RecipeViewHolder(View view) {
             super(view);
-            this.imageViewThumbnail = (ImageView) view.findViewById(R.id.thumbnail);
             this.textView = (TextView) view.findViewById(R.id.title);
-            imageViewThumbnail.setOnClickListener(this);
-
+            this.imageView = (ImageView) view.findViewById(R.id.food);
+            textView.setOnClickListener(this);
+            imageView.setOnClickListener(this);
         }
 
 

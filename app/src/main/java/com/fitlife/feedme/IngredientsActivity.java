@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,10 +17,13 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import POJOs.RecipeCardView;
+import POJOs.RecipeCardViewList;
 import fatsecret.platform.FatSecretAPI;
 import fatsecret.platform.RecipeRepository;
 import utils.JSONParser;
@@ -30,6 +34,8 @@ public class IngredientsActivity extends AppCompatActivity {
 
     public final static String SER_KEY = "fatsecret.platform.reciperepository";
 
+    public final static String LIST_KEY = "POJOs.RecipeCardView";
+
     EditText firstIngredient;
     EditText secondIngredient;
     EditText thirdIngredient;
@@ -39,6 +45,7 @@ public class IngredientsActivity extends AppCompatActivity {
     private ProgressDialog progressDialog = null;
     List<String> ingredientsList = new ArrayList<>();
     RecipeRepository recipeRepository;
+    RecipeCardViewList recipeCardViewList;
     String ingredientsArray[];
 
     @Override
@@ -53,7 +60,7 @@ public class IngredientsActivity extends AppCompatActivity {
         fifthIngredient = (EditText) findViewById(R.id.fifth_ingredient);
         fab = (FloatingActionButton) findViewById(R.id.fab_ingredients);
         recipeRepository = new RecipeRepository();
-
+        recipeCardViewList = new RecipeCardViewList();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (firstIngredient != null) {
                 firstIngredient.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -74,22 +81,32 @@ public class IngredientsActivity extends AppCompatActivity {
                 for (int j = 0; j < ingredientsList.size(); j++) {
                     ingredientsArray[j] = ingredientsList.get(j);
                 }
+
+                //    recipeRepository.setIngredients(ingredientsArray);
                 new loadData().execute();
-                next(recipeRepository);
+                next();
             }
         });
 
     }
 
-    private void next(RecipeRepository recipeRepository) {
+    private void next() {
 
         fab.setEnabled(false);
 
-        Intent intent = new Intent(this, RecipeComplexityActivity.class);
-        Bundle mBundle = new Bundle();
-        mBundle.putSerializable(SER_KEY, recipeRepository);
-        intent.putExtras(mBundle);
 
+        Bundle mBundle = new Bundle();
+
+
+        for (RecipeCardView recipeCardView : recipeRepository.getAllRecipes()) {
+            recipeCardViewList.add(recipeCardView);
+        }
+
+        mBundle.putSerializable(SER_KEY, recipeRepository);
+        mBundle.putParcelable("LIST",recipeCardViewList);
+        Intent intent = new Intent(this, RecipeComplexityActivity.class);
+
+        intent.putExtras(mBundle);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
@@ -126,11 +143,13 @@ public class IngredientsActivity extends AppCompatActivity {
         protected void onPostExecute(JSONObject result) {
             super.onPostExecute(result);
             progressDialog.dismiss();
-            Toast.makeText(getApplicationContext(), jsonobj.toString().substring(1, jsonobj.toString().length() - 1),
-                    Toast.LENGTH_LONG).show();
-          //  Log.d("onPostExecute", result.toString());
+//            Toast.makeText(getApplicationContext(), jsonobj.toString().substring(1, jsonobj.toString().length() - 1),
+//                    Toast.LENGTH_LONG).show();
+            Log.d("onPostExecute", result.toString());
         }
     }
+
+
 
 
 }

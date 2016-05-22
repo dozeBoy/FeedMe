@@ -3,22 +3,29 @@ package fatsecret.platform;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import POJOs.Recipe;
+import POJOs.RecipeCardView;
 import utils.StringParser;
 
 /**
  * Created by serban on 5/21/16.
  */
 
-public class RecipeFactory {
+public class RecipeFactory implements Serializable {
 
-    public static Recipe getRecipe(JSONObject jsonObject, String[] userIngredients) {
-        Recipe recipe = new Recipe();
+    public static RecipeCardView getRecipe(JSONObject jsonObject, String[] userIngredients) {
+        RecipeCardView recipe = new RecipeCardView();
         try {
+
+            JSONObject jsonResultRecipe = jsonObject.getJSONObject("recipe");
+            JSONObject jsonResultDirection = jsonResultRecipe.getJSONObject("directions");
+            JSONArray jsonArray = jsonResultDirection.getJSONArray("direction");
+
+
             recipe.setDescription(jsonObject.getString("recipe_description"));
             recipe.setId(jsonObject.getLong("recipe_id"));
             recipe.setImageURL(jsonObject.getString("recipe_image"));
